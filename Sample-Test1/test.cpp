@@ -4,6 +4,12 @@
 #include "../C++ DS-ALGO/src/Sort/SelectionSort.h"
 #include "../C++ DS-ALGO/src/Sort/InsertionSort.h"
 
+class Sort : public ::testing::Test {
+protected:
+	std::vector<int> unsortedArr = { 4,  5, -1,  3, -1 };
+	std::vector<int> sortedArr = { -1, -1,  3,  4,  5 };
+};
+
 template <typename T>
 void CheckArray(std::vector<T>& originalArr, std::vector<T>& sortedArr);
 
@@ -15,43 +21,24 @@ void CheckArray(std::vector<T>& originalArr, std::vector<T>& sortedArr)
 	}
 }
 
-TEST(Sort, BubbleSortT) {
-
-	std::vector<int> myArr   = {  4,  5, -1,  3, -1};
-	std::vector<int> sortArr = { -1, -1,  3,  4,  5};
-
-	BubbleSort(myArr);
-	CheckArray(myArr, sortArr);
+TEST_F(Sort, BubbleSortT) {
+	BubbleSort(unsortedArr);
+	CheckArray(unsortedArr, sortedArr);
 }
 
-TEST(Sort, QuickSortT) {
-
-	std::vector<int> myArr   = {  4,  5, -1,  3, -1 };
-	std::vector<int> sortArr = { -1, -1,  3,  4,  5 };
-
-	QuickSort(myArr);
-
-	CheckArray(myArr, sortArr);
+TEST_F(Sort, QuickSortT) {
+	QuickSort(unsortedArr);
+	CheckArray(unsortedArr, sortedArr);
 }
 
 
-TEST(Sort, SelectSortT) {
-
-	std::vector<int> myArr = { 4,  5, -1,  3, -1 };
-	std::vector<int> sortArr = { -1, -1,  3,  4,  5 };
-
-	SelectSort(myArr);
-
-	CheckArray(myArr, sortArr);
+TEST_F(Sort, SelectSortT) {
+	SelectSort(unsortedArr);
+	CheckArray(unsortedArr, sortedArr);
 }
 
 
-TEST(Sort, InsertSortT) {
-
-	std::vector<int> myArr = { 4,  5, -1,  3, -1 };
-	std::vector<int> sortArr = { -1, -1,  3,  4,  5 };
-
-	InsertSort(myArr);
-
-	CheckArray(myArr, sortArr);
+TEST_F(Sort, InsertSortT) {
+	InsertSort(unsortedArr);
+	CheckArray(unsortedArr, sortedArr);
 }
